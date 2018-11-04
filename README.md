@@ -1,4 +1,4 @@
 # Realtime-Blog
 blog with Realtime Comments using 
-  -Laravel
-  -Vue.JS
+  - Laravel
+  - Vue.JS
