@@ -2,3 +2,4 @@
 blog with Realtime Comments using 
   - Laravel
   - Vue.JS
+  - Pusher
