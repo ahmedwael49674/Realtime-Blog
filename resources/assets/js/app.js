@@ -1,21 +1,49 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import axios from 'axios';
+import Vue from 'vue';
 
-require('./bootstrap');
-
-window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-/*Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
-});*/
+window.onload = function () {
+      var app = new Vue({
+          el: '#app',
+          data: {
+              comments: {},
+              commentBox: '',
+              post: post,
+              user: {}
+          },
+          mounted() {
+              this.getAuth();
+              this.listen();
+          },
+          methods: {
+              getComments() {
+                  axios.get('/api/posts/' + this.post.id + '/comments')
+                      .then((response) => {
+                          this.comments = response.data;
+                      })
+              },
+              getAuth() {
+                  axios.get('/user/auth')
+                      .then((response) => {
+                          this.user = response.data;
+                      })
+                  this.getComments();
+              },
+              postComment() {
+                  axios.post('/api/posts/' + this.post.id + '/comment', {
+                          api_token: this.user.api_token,
+                          body: this.commentBox
+                      })
+                      .then((response) => {
+                          this.comments.unshift(response.data);
+                          this.commentBox = '';
+                      })
+              },
+              listen() {
+                  Echo.private('post.' + this.post.id)
+                      .listen('NewComment', (comment) => {
+                          this.comments.unshift(comment);
+                      })
+              }
+          }
+      });
+  }

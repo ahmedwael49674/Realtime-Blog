@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user/edit', 'UserController@edit')->name('users.edit');
-Route::put('/user/update/{user}', 'UserController@update')->name('users.update');
+Route::get('/user/auth', 'UserController@auth')->name('users.edit');
+Route::put('/user/update', 'UserController@update')->name('users.update');
 
 Route::resource('/posts', 'PostController');

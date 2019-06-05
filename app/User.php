@@ -7,37 +7,43 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+  use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password','image', 'api_token',
-    ];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+      'name', 'email', 'password','image', 'api_token',
+  ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+  /**
+   * The attributes that should be hidden for arrays.
+   *
+   * @var array
+   */
+  protected $hidden = [
+      'password', 'remember_token',
+  ];
 
-    public function accounts() {
-      return $this->hasMany('App\SocialAccount');
-    }
+  public function accounts() {
+    return $this->hasMany('App\SocialAccount');
+  }
 
-    public function posts() {
-      return $this->hasMany('App\Post');
-    }
+  public function posts() {
+    return $this->hasMany('App\Post');
+  }
 
 
-    public function comments(){
-    return $this->hasMany('App\Comment');
-    }
+  public function comments(){
+  return $this->hasMany('App\Comment');
+  }
+
+  
+  public function getImageAttribute($value)
+  {
+      return asset($value);
+  }
 
 }

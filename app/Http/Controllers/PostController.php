@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
       $posts = Post::where('user_id',auth()->id())->paginate(25);
-      return view('posts.index')->withPosts($posts);
+      return view('posts.index',compact('posts'));
     }
 
     /**
@@ -66,8 +66,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-      $post = Post::findOrFail($id);
-      return view('posts.show')->withPost($post);
+      $post = Post::with('user')->findOrFail($id)->toJson();
+      return view('posts.show',compact('post'));
     }
 
     /**
@@ -79,7 +79,7 @@ class PostController extends Controller
     public function edit($id)
     {
       $post = Post::findOrFail($id);
-      return view('posts.edit')->withPost($post);
+      return view('posts.edit',compact('post'));
     }
 
     /**

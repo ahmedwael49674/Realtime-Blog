@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Post extends Model
 {
@@ -15,8 +16,13 @@ class Post extends Model
     return $this->belongsTo('App\User');
   }
 
-public function comments(){
-    return $this->hasMany('App\Comment');
-}
+  public function comments(){
+      return $this->hasMany('App\Comment');
+  }
+
+  public function getUpdatedAtAttribute($value)
+  {
+      return Carbon::parse($value)->toformatteddatestring();
+  }
 
 }

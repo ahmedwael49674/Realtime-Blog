@@ -22,7 +22,7 @@
     color: white;
 }
 
-.btn-social > :first-child {
+.btn-social> :first-child {
     position: absolute;
     left: 0;
     top: 0;
@@ -100,7 +100,11 @@
 
 /* post index */
 
-.user img {
+.user img,
+.media-left img {
+    border-radius: 50%;
+    width: 110px;
+    height: 105px;
     display: inline;
 }
 
@@ -108,6 +112,31 @@
     display: inline;
     margin-left: 20px;
 }
+
+.Published {
+    margin-left: 15px;
+}
+
+.commentBox {
+    margin-bottom: 50px;
+}
+
+.commentBox button {
+    margin-top: 10px
+}
+
+.media {
+    margin-top: 20px;
+}
+
+.media-body {
+    padding: 20px 9px;
+}
+
+.media-body span {
+    color: #aaa;
+}
+
 
 /* user edit*/
 
