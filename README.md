@@ -1,7 +1,8 @@
 # Realtime-Blog
  ![alt text](https://github.com/ahmedwael49674/Realtime-Blog/blob/master/diagrames/view.JPG)
 ## Summary
-It's a system that allows publishing posts among the users and interact with these posts using (Real-time) comments and provides the user the ability to edit, remove and change the status of his own posts between published or draft ,<br> Also the system provides a fully controlling over your profile within the user image, name, password and email .
+It's a system that allows publishing posts among the users and interact with these posts using (Real-time) comments and provides the user with the ability to edit, remove and change the status of his own posts between published or draft,<br>
+Also, the system provides a fully controlling over your profile within the user image, name, password and email  .
 
 ## Used technologies
 1. Laravel
